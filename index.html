@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>SURPRESA ❤️</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&family=Zeyada&display=swap">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Zeyada', cursive; background:linear-gradient(to bottom,#fff,#f0f0f0); }
+
+    #startScreen {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      width:100vw;
+      height:100vh;
+      background:#ffe6e6;
+    }
+    #startScreen h1 {
+      font-family:'Short Stack', cursive;
+      font-size:70px;
+      color:#ff4d6d;
+      text-align:center;
+    }
+    #startScreen p {
+      font-size:28px;
+      margin-top:20px;
+      color:#333;
+    }
+    #startButton {
+      margin-top:50px;
+      padding:20px 50px;
+      font-size:24px;
+      border:none;
+      border-radius:20px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    #startButton:hover { background:#e33c5a; }
+
+    .gallery {
+      display:flex;
+      flex-wrap:wrap;
+      gap:25px;
+      justify-content:center;
+      padding:50px 20px;
+    }
+    .photo-card {
+      flex:1 1 200px;
+      max-width:220px;
+      height:auto;
+      cursor:pointer;
+      position:relative;
+      text-align:center;
+    }
+    .photo-card img {
+      width:100%;
+      height:auto;
+      border-radius:15px;
+      transition: transform 0.3s;
+    }
+    .photo-card img:hover { transform: scale(1.05); }
+    .photo-card p { margin-top:10px; font-size:25px; color:#555; font-family:'Zeyada', cursive; }
+
+    .messages {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:40px;
+      padding:60px 20px;
+      background:#fff5f5;
+    }
+    .message-card {
+      font-family:'Short Stack', cursive;
+      background:#fff;
+      border-radius:20px;
+      padding:30px 40px;
+      max-width:700px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+      text-align:center;
+    }
+    .message-card p { font-size:35px; line-height:1.5; color:#444; }
+
+    .heart-section {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      height:90vh;
+      background:#ffe6e6;
+      position:relative;
+    }
+    .heart-text-final {
+      font-family:'Short Stack', cursive;
+      font-size:48px;
+      font-weight:bold;
+      color:red;
+      text-align:center;
+    }
+
+    footer { 
+      text-align:center; 
+      padding:30px 20px; 
+      background:#ffccd5; 
+      font-size:50px; 
+      color:#000000;
+      font-family:'Short Stack', cursive;
+    }
+
+    #zoomModal {
+      display:none;
+      position:fixed;
+      z-index:999;
+      left:0; top:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content:center; align-items:center;
+    }
+    #zoomModal img {
+      max-width:90%;
+      max-height:90%;
+      border-radius:15px;
+    }
+    #zoomModal:target { display:flex; }
+
+    #mainContent { display:none; }
+
+    #fimButton {
+      display:block;
+      margin:50px auto;
+      padding:20px 60px;
+      font-size:28px;
+      border:none;
+      border-radius:20px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;
+      font-family:'Short Stack', cursive;
+      transition:0.3s;
+    }
+    #fimButton:hover { background:#e33c5a; }
+
+    #volumeControl {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 77, 109, 0.9);
+      padding: 10px 15px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    #volumeControl label {
+      color: white;
+      font-family: 'Short Stack', cursive;
+      font-size: 18px;
+    }
+    #volumeSlider {
+      width: 120px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bg-music" loop>
+    <source src="musicas/Zezé Di Camargo & Luciano - Sem Medo De Ser Feliz.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div id="startScreen">
+    <h1>Feliz Aniversário <br> Meu amor!</h1>
+    <p>❤️</p>
+    <button id="startButton">Clique aqui</button>
+  </div>
+
+  <div id="mainContent">
+
+    <section class="gallery">
+      <div class="photo-card"><img src="imagens/1.jpg" alt="Foto 1"><p>16/09/2021</p></div>
+      <div class="photo-card"><img src="imagens/2.jpg" alt="Foto 2"><p>27/05/2024</p></div>
+      <div class="photo-card"><img src="imagens/1teqteq.jpg" alt=""><p>22/06/2025</p></div>
+      <div class="photo-card"><img src="imagens/3.jpg" alt="Foto 3"><p>27/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/2teqteq.jpg" alt=""><p>14/05/2025</p></div>
+      <div class="photo-card"><img src="imagens/4.jpg" alt="Foto 4"><p>23/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/5.jpg" alt="Foto 5"><p>22/06/2024</p></div>
+    </section>
+
+    <section class="messages">
+      <div class="message-card"><p>Parabéns amor da minha vida! Finalmente chegou seu dia! ❤️</p></div>
+      <div class="message-card"><p>Queria muito estar aí com você pra te dar um abraço beeem apertado. ❤️</p></div>
+      <div class="message-card"><p>❤️ Mas como você teve que ir morar do outro lado do mundo, pensei em fazer essa surpresa pra vc. Que é simples mas é de coração kkk <br>Espero que goste.</p></div>
+      <div class="message-card"><p>❤️ Juntei algumas fotos nossas pra relembrar alguns dos varios momentos que vivemos até hoje. E claro que não poderia faltar foto com a teqteq. É impossível falar de você e não lembrar do Benzinho kkkkkk</p></div>
+      <div class="message-card"><p>Já passamos por muitas coisas juntos, coisas boas e ruins, e espero que passemos por muito mais, e que sejam só coisas boas daqui pra frente né kkkk ❤️</p></div>
+      <div class="message-card"><p>Sou muito feliz por ter você na minha vida!</p></div>
+      <div class="message-card"><p>Enfim... Só quero te desejar um feliz aniversário e que você aproveite bastante esse novo ciclo... ❤️<br>!!COM JUÍZO!!</p></div>
+      <div class="message-card"><p>❤️ Te desejo toda a felicidade do mundo, que papai do céu te abençoe, e que você consiga alcançar todos os seus objetivos.</p></div>
+      <div class="message-card"><p>❤️ Sei que vc está triste por causa do seu pai, e por outros motivos pessoais mas vc sabe que pode contar cmg, e que vou estar sempre aqui por vc, pro que der e vier!!! <br>TE AMO PRA SEMPRE!!! </p></div>
+    </section>
+
+    <section class="gallery">
+      <div class="photo-card"><img src="imagens/6.jpg" alt="Foto 6"><p>23/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/7.jpg" alt="Foto 7"><p>11/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/8.jpg" alt="Foto 8"><p>03/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/9.jpg" alt="Foto 9"><p>16/07/2021</p></div>
+      <div class="photo-card"><img src="imagens/10.jpg" alt="Foto 10"><p>05/02/2022</p></div>
+      <div class="photo-card"><img src="imagens/11.jpg" alt="Foto 11"><p>24/08/2023</p></div>
+      <div class="photo-card"><img src="imagens/12.jpg" alt="Foto 12"><p>17/12/2023</p></div>
+      <div class="photo-card"><img src="imagens/13.jpg" alt="Foto 13"><p>08/05/2024</p></div>
+      <div class="photo-card"><img src="imagens/14.jpg" alt="Foto 14"><p>25/05/2024</p></div>
+      <div class="photo-card"><img src="imagens/15.jpg" alt="Foto 15"><p>10/08/2025</p></div>
+    </section>
+
+    <section class="heart-section">
+      <p class="heart-text-final">AMO VOCÊ! ❤️<br>TÔ COM SDD!</p>
+    </section>
+
+    <button id="fimButton" onclick="window.location.href='videos.html'">Fim 🎬</button>
+
+    <footer>NOOO U EI VIU</footer>
+  </div>
+
+  <div id="zoomModal"><img id="zoomedImg" src=""></div>
+
+  <div id="volumeControl" style="display:none;">
+    <label for="volumeSlider">🔊 Volume</label>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1">
+  </div>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    let musicStarted = false;
+
+    const volumeControl = document.getElementById("volumeControl");
+    const volumeSlider = document.getElementById("volumeSlider");
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      if(!musicStarted){ music.play().catch(()=>{}); musicStarted=true; }
+      document.getElementById("startScreen").style.display="none";
+      document.getElementById("mainContent").style.display="block";
+      volumeControl.style.display = "flex";
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      music.volume = volumeSlider.value;
+    });
+
+    const photoCards = document.querySelectorAll(".photo-card img");
+    const zoomModal = document.getElementById("zoomModal");
+    const zoomedImg = document.getElementById("zoomedImg");
+
+    photoCards.forEach(img => {
+      img.addEventListener("click", () => {
+        zoomedImg.src = img.src;
+        zoomModal.style.display = "flex";
+      });
+    });
+    
+    zoomModal.addEventListener("click", () => { zoomModal.style.display="none"; });
+  </script>
+</body>
+</html>

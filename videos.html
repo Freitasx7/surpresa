@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Videos🎬</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&family=Zeyada&display=swap">
+  <style>
+    body {
+      margin:0;
+      padding:0;
+      font-family:'Zeyada', cursive;
+      background:#fff0f0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+    }
+    h1 {
+      font-family:'Short Stack', cursive;
+      font-size:50px;
+      color:#ff4d6d;
+      margin-top:50px;
+      text-align:center;
+    }
+    video {
+      max-width:90%;
+      border-radius:15px;
+      margin:30px 0;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      opacity:1;
+      transition: opacity 1s ease;
+    }
+    #backButton {
+      margin:30px;
+      padding:15px 50px;
+      font-size:24px;
+      border:none;
+      border-radius:20px;
+      background:#ff4d6d;
+      color:white;
+      font-family:'Short Stack', cursive;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    #backButton:hover { background:#e33c5a; }
+
+    .fade-out { opacity: 0; }
+    .fade-in { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <h1>🎬</h1>
+
+  <video id="videoPlayer" controls autoplay>
+    <source src="videos/1.mp4" type="video/mp4">
+    <source src="videos/2.mp4" type="video/mp4">
+    <source src="videos/3.mp4" type="video/mp4">
+    <source src="videos/4.mp4" type="video/mp4">
+    <source src="videos/5.mp4" type="video/mp4">
+    <source src="videos/6.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo.
+  </video>
+
+  <button id="backButton" onclick="window.location.href='index.html'">⬅️ Voltar</button>
+
+  <audio id="bgMusic" src="" autoplay loop></audio>
+
+  <script>
+    const videoPlayer = document.getElementById('videoPlayer');
+    const bgMusic = document.getElementById('bgMusic');
+
+    const playlist = [
+      'videos/1.mp4',
+      'videos/2.mp4',
+      'videos/3.mp4',
+      'videos/4.mp4',
+      'videos/5.mp4',
+      'videos/6.mp4'
+    ];
+
+    let current = 0;
+
+    videoPlayer.addEventListener('ended', () => {
+      
+      videoPlayer.classList.add('fade-out');
+
+      setTimeout(() => {
+        current++;
+        if(current < playlist.length) {
+          videoPlayer.src = playlist[current];
+          videoPlayer.load();
+          videoPlayer.play();
+          videoPlayer.classList.remove('fade-out');
+          videoPlayer.classList.add('fade-in');
+
+          setTimeout(() => {
+            videoPlayer.classList.remove('fade-in');
+          }, 1000);
+        } else {
+          
+          window.location.href = 'index.html';
+        }
+      }, 500); 
+    });
+
+    bgMusic.volume = 0.3;
+  </script>
+</body>
+</html>
